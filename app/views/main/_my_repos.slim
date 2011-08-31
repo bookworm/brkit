@@ -1,0 +1,23 @@
+#my-repos-wrap 
+  h2 
+    span.title Your Repositories 
+    a.new-repo href="/repos/new" New Repository
+  ul#my-repos.repo-list.ulreset
+    - @myrepos.each do |repo|  
+       li class="my-repo" 
+         a href="#{repo.url}"  
+           span.class= repo.author.username
+           span.repo-name= repo.title         
+#watched-repos-wrap 
+  h2 
+    span.title Watched Repositories       
+  ul#watched-repos.repo-list.ulreset
+    - @watchedrepos.each do |repo|  
+       li class="watched-repo" 
+         | <a href="
+         == repo.url   
+         | ">
+         span.class= repo.author.username
+         |/
+         span.repo-name= repo.title    
+         | </a>

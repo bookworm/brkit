@@ -1,0 +1,8 @@
+# Where the repos are stored
+repository_base_path: "/repos"
+
+# Host
+domain: localhost
+
+# User which is running git daemon
+user: git

@@ -1,0 +1,23 @@
+!doctype html
+html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  head
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    title Activity Feed
+    ==include_css 'prototype'  
+    ==include_js :jquery, 'index'
+  body   
+    #header 
+      .container  
+        .user
+          .user-icon
+            img src="http://gravatar.com/avatar/#{current_account.gravatar_id}?s=44"
+          a.message-count href="/messages"= @message_count 
+        ul.ulreset                       
+          li 
+            a href="/account-settings" Account Settings
+          li 
+            a href="/logout" Logout   
+        .clearfix   
+        #search-wrap style="display:none;"
+          ==form_for 'search', '/projects/search', :class => :form do |f|   
+            ==f.text_field :search, :id => :search, :value => '...search'

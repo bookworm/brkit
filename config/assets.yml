@@ -1,0 +1,12 @@
+css:
+  bundles:
+    application: ['reset', 'application']
+    admin:       ['reset', 'admin']
+js:
+  vendors:
+    jquery:
+      version: 1.6.0
+  bundles:
+    plugins:     ['plugin1', 'plugin2']
+    application: ['application']
+    admin:       ['admin']

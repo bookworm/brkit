@@ -1,0 +1,22 @@
+.group
+  ==f.label :title
+  ==f.error_message_on :title
+  ==f.text_field :title, :class => :text_field
+
+.group
+  ==f.label :private
+  ==f.error_message_on :private
+  ==f.check_box :private, :class => :check_box
+
+.group
+  ==f.label :homepage
+  ==f.error_message_on :homepage
+  ==f.text_field :homepage, :class => :text_field
+
+.group
+  ==f.label :description
+  ==f.error_message_on :desc_raw
+  ==f.text_field :desc_raw, :class => :text_field
+
+.group.navform.wat-cf
+  ==f.submit pat(:save), :class => :button

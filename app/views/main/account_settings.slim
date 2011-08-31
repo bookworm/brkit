@@ -1,0 +1,70 @@
+!doctype html
+html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  head
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    title Account Settings
+    ==include_css 'prototype' 
+  body   
+    #header 
+      .container 
+        .user-icon
+          img src="http://gravatar.com/avatar/#{current_account.gravatar_id}?s=44"
+        a.message-count href="/messages"= @message_count
+        h1.current-user 
+          a href="/#{current_account.username}"= current_account.username          
+        ul                         
+          li 
+            a href="/account-settings" Account Settings
+          li 
+            a href="/logout" Logout 
+        ==form_for 'search', '/projects/search', :class => :form do |f|   
+          ==f.text_field :search, :class => :text_field, :value => '...search'
+    #account-settings.zp-70
+      ul#account-settings-menu
+        li
+          a#profile-update href="#" Profile Information    
+        li
+          a#account-admin-update href="#" Account Admin    
+        li
+          a#ssh-keys-update href="#" SSH Keys
+      ul#account-settings-list
+        li#profile-info.active
+          ==form_for :account, url(:user, :update), :class => :form do |f|   
+            .form-item
+              ==f.label :name
+              ==f.error_message_on :name
+              ==f.text_field :name, :class => :text_field 
+            .form-item
+              ==f.label 'Show Email'
+              ==f.check_box :name, :class => :text_field  
+            .form-item
+              ==f.label :blog
+              ==f.error_message_on :blog
+              ==f.text_field :blog, :class => :text_field     
+            .form-item
+              ==f.label :location
+              ==f.error_message_on :location
+              ==f.text_field :location, :class => :text_field      
+            ==f.submit 'Update Information', :class => :button      
+        li#account-admin style="display: none;"    
+          #password-update   
+            h3 Update Password
+            ==form_for :account, url(:user, :update), :class => :form do |f|     
+              ==f.label :password
+              ==f.error_message_on :password
+              ==f.text_field :password, :class => :text_field
+              ==f.label :password_confirmation
+              ==f.error_message_on :password_confirmation
+              ==f.text_field :password_confirmation, :class => :text_field  
+              ==f.submit 'Update Password', :class => :button  
+        li#ssh-keys style="display: none;"  
+          #add-key      
+            h3 Add Key
+            ==form_for :account, url(:user, :addkey), :class => :form do |f|
+              ==f.label :title
+              ==f.error_message_on :title
+              ==f.text_field :title, :class => :text_field
+              ==f.label :key
+              ==f.error_message_on :raw
+              ==f.text_field :raw, :class => :text_field  
+              ==f.submit 'Add Key', :class => :button  
